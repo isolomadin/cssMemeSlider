@@ -1,3 +1,9 @@
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -39,29 +45,35 @@ p {
 
 .images_content {
     width: 100%;
+    /* height: 42rem; */
     overflow: hidden;
+    margin-bottom: 1.5rem;
 }
 
 .slider_memes_images_list {
     display: flex;
-    max-width: 90rem;
+    max-width: 100%;
+    max-height: 100%;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
     transform: translateX(0);
     transition: transform 1200ms cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    max-width: 100%;
+    max-height: 70%;
     margin: 0 auto;
     border-radius: 2rem;
-    max-height: 40rem;
     object-fit: cover;
 }
 
 .slider_mem {
     width: 100%;
     border-radius: 2rem;
+    overflow: hidden;
     flex-shrink: 0;
 }
 
@@ -78,7 +90,8 @@ input {
 
 .pagination_list {
     display: flex;
-    margin-right: 2rem;
+    align-items: center;
+    margin-top: -2rem;
 }
 
 label {
@@ -109,34 +122,18 @@ span {
     width: 1.56rem;
     height: 1.56rem;
     border-radius: 50%;
-    border: 0.125rem solid transparent;
+    border: 0.15rem solid transparent;
     background-color: rgb(51, 56, 54);
 }
 
-/* width > 48rem */
+.slider_text_content_list {
+    display: flex;
+    max-width: 100%;
+    transform: translateX(0);
+    transition: transform 1200ms cubic-bezier(0.42, 0, 0.58, 1);
+}
 
-@media screen and (min-width: 48rem) {
-    .slider_content {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .slider_text_content {
-        width: 100%;
-        max-width: 45rem;
-        overflow: hidden;
-        margin-right: auto;
-    }
-
-    .slider_text_content_list {
-        display: flex;
-        max-width: 100%;
-        margin-left: 2rem;
-        transform: translateX(0);
-        transition: transform 1200ms cubic-bezier(0.42, 0, 0.58, 1);
-    }
-    
-    .slider_text {
+.slider_text {
         display: flex;
         width: 100%;
         color: rgb(64, 67, 70);
@@ -146,6 +143,36 @@ span {
         line-height: 0.5;
         align-items: center;
         flex-shrink: 0;
+}
+/* width > 48rem */
+
+@media screen and (min-width: 48rem) {
+    .slider_memes_images_list {
+        display: flex;
+        transform: translateX(0);
+        transition: transform 1200ms cubic-bezier(0.42, 0, 0.58, 1);
+    }
+
+    .slider_content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .slider_text_content {
+        width: 100%;
+        overflow: hidden;
+        margin-right: auto;
+    }
+
+    .pagination_list {
+        margin-top: -2rem;
+    }
+    
+}
+
+@media screen and (max-width: 48rem) {
+    .pagination_list {
+        margin-top: 0rem;
     }
 }
 
@@ -155,15 +182,11 @@ span {
     .slider_text_content {
         width: 100%;
         margin-right: 0;
-        margin-top: 0.3rem;
+        overflow: hidden;
     }
 
     .slider_text_content_list {
-        display: flex;
         max-width: 100%;
-        margin-left: 2rem;
-        transform: translateX(0);
-        transition: transform 1200ms cubic-bezier(0.42, 0, 0.58, 1);
     }
 
     .slider_text {
@@ -177,82 +200,76 @@ span {
         flex-shrink: 0;
         align-items: center;
     }
-
-    .pagination_list {
-        display: flex;
-        margin-top: 0.5rem;
-        align-items: center;
-    }
 }
 
 /* Slider */
 
-input[id="mem1"]:checked 
+#mem1:checked 
     ~ .images_content 
     > .slider_memes_images_list {
     transform: translateX(0);
 }
 
-input[id="mem2"]:checked 
+#mem2:checked 
     ~ .images_content 
     > .slider_memes_images_list {
     transform: translateX(-100%);
 }
 
-input[id="mem3"]:checked 
+#mem3:checked 
     ~ .images_content 
     > .slider_memes_images_list {
     transform: translateX(-200%);
 }
 
-input[id="mem4"]:checked 
+#mem4:checked 
     ~ .images_content 
     > .slider_memes_images_list {
     transform: translateX(-300%);
 }
 
-input[id="mem5"]:checked 
+#mem5:checked 
     ~ .images_content 
     > .slider_memes_images_list {
     transform: translateX(-400%);
 }
   
-input[id="mem1"]:checked
+#mem1:checked
     ~ .slider_content
     > .slider_text_content
     > .slider_text_content_list {
     transform: translateX(0);
 }
 
-input[id="mem2"]:checked
+#mem2:checked
     ~ .slider_content
     > .slider_text_content
     > .slider_text_content_list {
     transform: translateX(-100%);
 }
 
-input[id="mem3"]:checked
+#mem3:checked
     ~ .slider_content
     > .slider_text_content
     > .slider_text_content_list {
     transform: translateX(-200%);
 }
 
-input[id="mem4"]:checked
+#mem4:checked
     ~ .slider_content
     > .slider_text_content
     > .slider_text_content_list {
     transform: translateX(-300%);
 }
 
-input[id="mem5"]:checked
+#mem5:checked
     ~ .slider_content
     > .slider_text_content
     > .slider_text_content_list {
     transform: translateX(-400%);
 }
   
-input[id="mem1"]:checked
+#mem1:checked
     ~ .slider_content
     > .pagination_list
     label[for="mem1"]
@@ -261,7 +278,7 @@ input[id="mem1"]:checked
     border-color: rgb(0, 0, 0);
 }
 
-input[id="mem2"]:checked
+#mem2:checked
     ~ .slider_content
     > .pagination_list
     label[for="mem2"]
@@ -270,7 +287,7 @@ input[id="mem2"]:checked
     border-color: rgb(0, 0, 0);
 }
 
-input[id="mem3"]:checked
+#mem3:checked
     ~ .slider_content
     > .pagination_list
     label[for="mem3"]
@@ -279,7 +296,7 @@ input[id="mem3"]:checked
     border-color: rgb(0, 0, 0);
 }
 
-input[id="mem4"]:checked
+#mem4:checked
     ~ .slider_content
     > .pagination_list
     label[for="mem4"]
@@ -288,7 +305,7 @@ input[id="mem4"]:checked
     border-color: rgb(0, 0, 0);
 }
 
-input[id="mem5"]:checked
+#mem5:checked
     ~ .slider_content
     > .pagination_list
     label[for="mem5"]
@@ -297,7 +314,7 @@ input[id="mem5"]:checked
     border-color: rgb(0, 0, 0);
 }
   
-input[id="mem1"]:checked
+#mem1:checked
     ~ .slider_content
     > .pagination_list
     label[for="mem1"]:hover
@@ -305,7 +322,7 @@ input[id="mem1"]:checked
     border-color: rgba(160, 168, 228, 0.239);
 }
 
-input[id="mem2"]:checked
+#mem2:checked
     ~ .slider_content
     > .pagination_list
     label[for="mem2"]:hover
@@ -313,7 +330,7 @@ input[id="mem2"]:checked
     border-color: rgba(160, 168, 228, 0.239);
 }
  
-input[id="mem3"]:checked
+#mem3:checked
     ~ .slider_content
     > .pagination_list
     label[for="mem3"]:hover
@@ -321,7 +338,7 @@ input[id="mem3"]:checked
     border-color: rgba(160, 168, 228, 0.239);
 }
 
-input[id="mem4"]:checked
+#mem4:checked
     ~ .slider_content
     > .pagination_list
     label[for="mem4"]:hover
@@ -329,7 +346,7 @@ input[id="mem4"]:checked
     border-color: rgba(160, 168, 228, 0.239);
 }
 
-input[id="mem5"]:checked
+#mem5:checked
     ~ .slider_content
     > .pagination_list
     label[for="mem5"]:hover
