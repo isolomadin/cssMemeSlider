@@ -223,6 +223,12 @@ span {
     }
 }
 
+@media screen and (max-width: 47.99rem) {
+    .slider_text {
+        align-items: start;
+    }
+}
+
 @media screen and (max-width: 31.25rem) {
     .slider_text {
         font-size: 0.8rem;
@@ -232,6 +238,7 @@ span {
         width: 1rem;
         height: 1rem;
     }
+
 }
 
 /* Slider */
